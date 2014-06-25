@@ -8,24 +8,28 @@ OVERWRITTEN WHEN YOU RE-RUN CODE GENERATION.
 Refer to the Altova MapForce Documentation for further details.
 http://www.altova.com/mapforce
 -->
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tbf="http://www.altova.com/MapForce/UDF/tbf" xmlns:agt="http://www.altova.com/Mapforce/agt" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:n1="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" exclude-result-prefixes="tbf agt xs fn">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:n1="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" exclude-result-prefixes="xs fn">
 	<xsl:output method="xml" encoding="UTF-8" byte-order-mark="no" indent="yes"/>
 	<xsl:template match="/">
-		<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
-					<xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 C:/UBL/xsd/maindoc/UBL-Invoice-2.1.xsd'"/>
-			<xsl:attribute name="xmlns:xsd" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 C:/UBL/xsd/maindoc/UBL-Invoice-2.1.xsd'"/>
+		<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:n0="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2" xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2" xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2">
+			<xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 C:/UBL/xsd/maindoc/UBL-Invoice-2.1.xsd'"/>
 			<xsl:for-each select="n1:Invoice">
-				<xsl:variable name="var19_current" as="node()" select="."/>
+				<xsl:variable name="var24_current" as="node()" select="."/>
 				<xsl:variable name="var1_Delivery" as="node()*" select="cac:Delivery"/>
 				<xsl:variable name="var2_TaxTotal" as="node()*" select="cac:TaxTotal"/>
-				<xsl:variable name="var3_resultof_first" as="node()" select="cac:AccountingCustomerParty"/>
-				<xsl:variable name="var4_resultof_first" as="node()" select="cbc:ID"/>
-				<xsl:variable name="var5_resultof_first" as="node()" select="cac:AccountingSupplierParty"/>
-				<xsl:variable name="var6_resultof_first" as="node()" select="cac:LegalMonetaryTotal"/>
+				<xsl:variable name="var3_resultof_first" as="node()" select="cac:AccountingSupplierParty"/>
+				<xsl:variable name="var4_resultof_first" as="node()" select="cac:LegalMonetaryTotal"/>
+				<xsl:variable name="var5_resultof_first" as="node()" select="cac:AccountingCustomerParty"/>
+				<xsl:variable name="var6_resultof_first" as="node()" select="cbc:ID"/>
 				<xsl:variable name="var7_resultof_any" as="xs:boolean" select="fn:exists($var1_Delivery[fn:exists(cac:DeliveryLocation[fn:exists(cac:Address[fn:exists(cbc:PostalZone)])])])"/>
 				<xsl:variable name="var8_resultof_any" as="xs:boolean" select="fn:exists($var1_Delivery[fn:exists(cac:DeliveryLocation[fn:exists(cac:Address[fn:exists(cbc:CityName)])])])"/>
 				<xsl:variable name="var9_resultof_any" as="xs:boolean" select="fn:exists($var1_Delivery[fn:exists(cac:DeliveryLocation[fn:exists(cac:Address[fn:exists(cbc:StreetName)])])])"/>
-							<xsl:for-each select="cbc:UBLVersionID">
+				<xsl:for-each select="ext:UBLExtensions">
+					<ext:UBLExtensions>
+						<xsl:sequence select="(./@node(), ./node())"/>
+					</ext:UBLExtensions>
+				</xsl:for-each>
+				<xsl:for-each select="cbc:UBLVersionID">
 					<cbc:UBLVersionID>
 						<xsl:sequence select="(./@node(), ./node())"/>
 					</cbc:UBLVersionID>
@@ -46,7 +50,7 @@ http://www.altova.com/mapforce
 					</cbc:ProfileExecutionID>
 				</xsl:for-each>
 				<cbc:ID>
-					<xsl:sequence select="($var4_resultof_first/@node(), $var4_resultof_first/node())"/>
+					<xsl:sequence select="($var6_resultof_first/@node(), $var6_resultof_first/node())"/>
 				</cbc:ID>
 				<xsl:for-each select="cbc:CopyIndicator">
 					<cbc:CopyIndicator>
@@ -182,10 +186,10 @@ http://www.altova.com/mapforce
 					</cac:Signature>
 				</xsl:for-each>
 				<cac:AccountingSupplierParty>
-					<xsl:sequence select="($var5_resultof_first/@node(), $var5_resultof_first/node())"/>
+					<xsl:sequence select="($var3_resultof_first/@node(), $var3_resultof_first/node())"/>
 				</cac:AccountingSupplierParty>
 				<cac:AccountingCustomerParty>
-					<xsl:sequence select="($var3_resultof_first/@node(), $var3_resultof_first/node())"/>
+					<xsl:sequence select="($var5_resultof_first/@node(), $var5_resultof_first/node())"/>
 				</cac:AccountingCustomerParty>
 				<xsl:for-each select="cac:PayeeParty">
 					<cac:PayeeParty>
@@ -285,8 +289,123 @@ http://www.altova.com/mapforce
 					</cac:DeliveryTerms>
 				</xsl:for-each>
 				<xsl:for-each select="cac:PaymentMeans">
+					<xsl:variable name="var13_resultof_first" as="node()" select="cbc:PaymentMeansCode"/>
 					<cac:PaymentMeans>
-						<xsl:sequence select="(./@node(), ./node())"/>
+						<xsl:for-each select="cbc:ID">
+							<cbc:ID>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cbc:ID>
+						</xsl:for-each>
+						<cbc:PaymentMeansCode>
+							<xsl:sequence select="($var13_resultof_first/@node(), $var13_resultof_first/node())"/>
+						</cbc:PaymentMeansCode>
+						<xsl:for-each select="cbc:PaymentDueDate">
+							<cbc:PaymentDueDate>
+								<xsl:sequence select="xs:string(xs:date(fn:string(.)))"/>
+							</cbc:PaymentDueDate>
+						</xsl:for-each>
+						<xsl:for-each select="cbc:PaymentChannelCode">
+							<cbc:PaymentChannelCode>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cbc:PaymentChannelCode>
+						</xsl:for-each>
+						<xsl:for-each select="cbc:PaymentID">
+							<cbc:PaymentID>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cbc:PaymentID>
+						</xsl:for-each>
+						<xsl:for-each select="cac:CardAccount">
+							<cac:CardAccount>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cac:CardAccount>
+						</xsl:for-each>
+						<xsl:for-each select="cac:PayeeFinancialAccount">
+							<cac:PayeeFinancialAccount>
+								<xsl:for-each select="cbc:ID">
+									<cbc:ID>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:ID>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:Name">
+									<cbc:Name>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:Name>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:AliasName">
+									<cbc:AliasName>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:AliasName>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:AccountTypeCode">
+									<cbc:AccountTypeCode>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:AccountTypeCode>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:AccountFormatCode">
+									<cbc:AccountFormatCode>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:AccountFormatCode>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:CurrencyCode">
+									<cbc:CurrencyCode>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:CurrencyCode>
+								</xsl:for-each>
+								<xsl:for-each select="cbc:PaymentNote">
+									<cbc:PaymentNote>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cbc:PaymentNote>
+								</xsl:for-each>
+								<xsl:for-each select="cac:FinancialInstitutionBranch">
+									<cac:FinancialInstitutionBranch>
+										<xsl:for-each select="cbc:ID">
+											<cbc:ID>
+												<xsl:sequence select="(./@node(), ./node())"/>
+											</cbc:ID>
+										</xsl:for-each>
+										<xsl:for-each select="cbc:Name">
+											<cbc:Name>
+												<xsl:sequence select="(./@node(), ./node())"/>
+											</cbc:Name>
+										</xsl:for-each>
+										<xsl:for-each select="cac:FinancialInstitution">
+											<cac:FinancialInstitution>
+												<xsl:for-each select="cbc:ID">
+													<cbc:ID>
+														<xsl:sequence select="fn:string(.)"/>
+													</cbc:ID>
+												</xsl:for-each>
+											</cac:FinancialInstitution>
+										</xsl:for-each>
+										<xsl:for-each select="cac:Address">
+											<cac:Address>
+												<xsl:sequence select="(./@node(), ./node())"/>
+											</cac:Address>
+										</xsl:for-each>
+									</cac:FinancialInstitutionBranch>
+								</xsl:for-each>
+								<xsl:for-each select="cac:Country">
+									<cac:Country>
+										<xsl:sequence select="(./@node(), ./node())"/>
+									</cac:Country>
+								</xsl:for-each>
+							</cac:PayeeFinancialAccount>
+						</xsl:for-each>
+						<xsl:for-each select="cac:CreditAccount">
+							<cac:CreditAccount>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cac:CreditAccount>
+						</xsl:for-each>
+						<xsl:for-each select="cac:PaymentMandate">
+							<cac:PaymentMandate>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cac:PaymentMandate>
+						</xsl:for-each>
+						<xsl:for-each select="cac:TradeFinancing">
+							<cac:TradeFinancing>
+								<xsl:sequence select="(./@node(), ./node())"/>
+							</cac:TradeFinancing>
+						</xsl:for-each>
 					</cac:PaymentMeans>
 				</xsl:for-each>
 				<xsl:for-each select="cac:PaymentTerms">
@@ -320,59 +439,88 @@ http://www.altova.com/mapforce
 					</cac:PaymentAlternativeExchangeRate>
 				</xsl:for-each>
 				<xsl:for-each select="$var2_TaxTotal">
+					<xsl:variable name="var14_resultof_first" as="node()" select="cbc:TaxAmount"/>
 					<cac:TaxTotal>
-						<xsl:sequence select="(./@node(), ./node())"/>
+						<cbc:TaxAmount>
+							<xsl:attribute name="currencyID" namespace="" select="fn:string($var14_resultof_first/@currencyID)"/>
+							<xsl:sequence select="xs:string(xs:decimal(fn:string($var14_resultof_first)))"/>
+						</cbc:TaxAmount>
+						<xsl:for-each select="cac:TaxSubtotal">
+							<xsl:variable name="var15_resultof_first" as="node()" select="cac:TaxCategory"/>
+							<xsl:variable name="var16_resultof_first" as="node()" select="cbc:TaxAmount"/>
+							<cac:TaxSubtotal>
+								<xsl:for-each select="cbc:TaxableAmount">
+									<cbc:TaxableAmount>
+										<xsl:attribute name="currencyID" namespace="" select="fn:string(@currencyID)"/>
+										<xsl:sequence select="xs:string(xs:decimal(fn:string(.)))"/>
+									</cbc:TaxableAmount>
+								</xsl:for-each>
+								<cbc:TaxAmount>
+									<xsl:attribute name="currencyID" namespace="" select="fn:string($var16_resultof_first/@currencyID)"/>
+									<xsl:sequence select="xs:string(xs:decimal(fn:string($var16_resultof_first)))"/>
+								</cbc:TaxAmount>
+								<cac:TaxCategory>
+									<xsl:sequence select="($var15_resultof_first/@node(), $var15_resultof_first/node())"/>
+								</cac:TaxCategory>
+							</cac:TaxSubtotal>
+						</xsl:for-each>
 					</cac:TaxTotal>
 				</xsl:for-each>
 				<xsl:for-each select="cac:TaxExchangeRate">
-					<xsl:variable name="var18_current" as="node()" select="."/>
-					<xsl:variable name="var15_val" as="node()+" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:n1="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+					<xsl:variable name="var23_current" as="node()" select="."/>
+					<xsl:variable name="var20_val" as="node()+" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns="http://uri.etsi.org/01903/v1.4.1#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:n0="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2" xmlns:n1="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2" xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2" xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2">
 						<xsl:for-each select="$var2_TaxTotal">
-							<xsl:variable name="var13_current" as="node()" select="."/>
-							<xsl:for-each select="$var18_current/cbc:CalculationRate">
+							<xsl:variable name="var17_current" as="node()" select="."/>
+							<xsl:for-each select="$var23_current/cbc:CalculationRate">
 								<cbc:TaxAmount>
-									<xsl:for-each select="$var19_current/cbc:TaxCurrencyCode">
+									<xsl:for-each select="$var24_current/cbc:TaxCurrencyCode">
 										<xsl:attribute name="currencyID" namespace="" select="fn:string(.)"/>
 									</xsl:for-each>
-									<xsl:sequence select="xs:string((xs:decimal(fn:string($var13_current/cbc:TaxAmount)) * xs:decimal(fn:string(.))))"/>
+									<xsl:sequence select="xs:string((xs:decimal(fn:string($var17_current/cbc:TaxAmount)) * xs:decimal(fn:string(.))))"/>
 								</cbc:TaxAmount>
 							</xsl:for-each>
 						</xsl:for-each>
 						<TaxSubtotal xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
 							<xsl:for-each select="$var2_TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount">
-								<xsl:variable name="var14_current" as="node()" select="."/>
-								<xsl:for-each select="$var18_current/cbc:CalculationRate">
+								<xsl:variable name="var18_current" as="node()" select="."/>
+								<xsl:for-each select="$var23_current/cbc:CalculationRate">
 									<cbc:TaxableAmount>
-										<xsl:attribute name="currencyID" namespace="" select="fn:string($var18_current/cbc:TargetCurrencyCode)"/>
-										<xsl:sequence select="xs:string((xs:decimal(fn:string($var14_current)) * xs:decimal(fn:string(.))))"/>
+										<xsl:attribute name="currencyID" namespace="" select="fn:string($var23_current/cbc:TargetCurrencyCode)"/>
+										<xsl:sequence select="xs:string((xs:decimal(fn:string($var18_current)) * xs:decimal(fn:string(.))))"/>
 									</cbc:TaxableAmount>
 								</xsl:for-each>
 							</xsl:for-each>
 							<xsl:for-each select="$var2_TaxTotal/cac:TaxSubtotal/cbc:TransactionCurrencyTaxAmount">
 								<cbc:TaxAmount>
-									<xsl:attribute name="currencyID" namespace="" select="fn:string($var18_current/cbc:TargetCurrencyCode)"/>
+									<xsl:attribute name="currencyID" namespace="" select="fn:string($var23_current/cbc:TargetCurrencyCode)"/>
 									<xsl:sequence select="xs:string(xs:decimal(fn:string(.)))"/>
 								</cbc:TaxAmount>
+							</xsl:for-each>
+							<xsl:for-each select="$var2_TaxTotal/cac:TaxSubtotal">
+								<xsl:variable name="var19_resultof_first" as="node()" select="cac:TaxCategory"/>
+								<TaxCategory>
+									<xsl:sequence select="($var19_resultof_first/@node(), $var19_resultof_first/node())"/>
+								</TaxCategory>
 							</xsl:for-each>
 						</TaxSubtotal>
 					</xsl:variable>
 					<cac:TaxTotal>
-						<xsl:variable name="var16_create_TaxTotal" as="node()">
+						<xsl:variable name="var21_create_TaxTotal" as="node()">
 							<TaxTotal xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
-								<xsl:sequence select="$var15_val"/>
+								<xsl:sequence select="$var20_val"/>
 							</TaxTotal>
 						</xsl:variable>
-						<xsl:for-each select="$var16_create_TaxTotal/cbc:TaxAmount">
+						<xsl:for-each select="$var21_create_TaxTotal/cbc:TaxAmount">
 							<cbc:TaxAmount>
 								<xsl:sequence select="(./@node(), ./node())"/>
 							</cbc:TaxAmount>
 						</xsl:for-each>
-						<xsl:variable name="var17_create_TaxTotal" as="node()">
+						<xsl:variable name="var22_create_TaxTotal" as="node()">
 							<TaxTotal xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
-								<xsl:sequence select="$var15_val"/>
+								<xsl:sequence select="$var20_val"/>
 							</TaxTotal>
 						</xsl:variable>
-						<xsl:for-each select="$var17_create_TaxTotal/cac:TaxSubtotal">
+						<xsl:for-each select="$var22_create_TaxTotal/cac:TaxSubtotal">
 							<cac:TaxSubtotal>
 								<xsl:sequence select="(./@node(), ./node())"/>
 							</cac:TaxSubtotal>
@@ -385,7 +533,7 @@ http://www.altova.com/mapforce
 					</cac:WithholdingTaxTotal>
 				</xsl:for-each>
 				<cac:LegalMonetaryTotal>
-					<xsl:sequence select="($var6_resultof_first/@node(), $var6_resultof_first/node())"/>
+					<xsl:sequence select="($var4_resultof_first/@node(), $var4_resultof_first/node())"/>
 				</cac:LegalMonetaryTotal>
 				<xsl:for-each select="cac:InvoiceLine">
 					<cac:InvoiceLine>
