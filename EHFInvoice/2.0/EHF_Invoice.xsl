@@ -264,7 +264,7 @@
 		<div class="invoice dump content holder">
 				<xsl:for-each select="cbc:Note" >
 					<xsl:if test="position() > 1">
-						<xsl:apply-templates select="." mode="dump "/>
+						<xsl:apply-templates select="." mode="dump"/>
 					</xsl:if>
 				</xsl:for-each>
 				<xsl:apply-templates select="*[not(self::cbc:IssueDate) and not(self::cbc:Note) and not(self::cbc:UBLVersionID) and not(self::cbc:CustomizationID) and not (self::cbc:ProfileID) and not (self::cbc:ID)]" mode="dump"/>
