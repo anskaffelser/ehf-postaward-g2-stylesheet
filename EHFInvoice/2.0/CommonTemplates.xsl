@@ -39,17 +39,7 @@
 		<div class="UBLPayeeParty">
 			<xsl:apply-templates select="cac:PartyName"/>
 			<xsl:apply-templates select="cac:PostalAddress"/>
-			<div>
-				<xsl:if test="cbc:EndpointID">
-					<small><xsl:value-of
-							select="$moduleDoc/module/document-merge/g-funcs/g[@name='EndpointID']/g-lang[lang($pLang)]"
-						/> &#160;<xsl:apply-templates select="cbc:EndpointID"/>
-						<xsl:if test="cbc:EndpointID/@schemeID !='' "> &#160;[<xsl:value-of
-								select="cbc:EndpointID/@schemeID"/>] </xsl:if>
-					</small>
-
-				</xsl:if>
-			</div>
+			
 			<div>
 				<xsl:if test="cac:PartyIdentification/cbc:ID">
 
@@ -57,9 +47,7 @@
 					<small><xsl:value-of
 							select="$moduleDoc/module/document-merge/g-funcs/g[@name='PartyID']/g-lang[lang($pLang)]"
 						/> &#160;<xsl:apply-templates select="cac:PartyIdentification/cbc:ID"/>
-						<xsl:if test="cac:PartyIdentification/cbc:ID/@schemeID !='' ">
-								&#160;[<xsl:apply-templates
-								select="cac:PartyIdentification/cbc:ID/@schemeID"/>] </xsl:if>
+
 					</small>
 
 				</xsl:if>
@@ -76,10 +64,7 @@
 									select="$moduleDoc/module/document-merge/g-funcs/g[@name='CompanyID']/g-lang[lang($pLang)]"
 								/> &#160;<xsl:apply-templates
 									select="cac:PartyLegalEntity/cbc:CompanyID"/>
-								<xsl:if test="cac:PartyLegalEntity/cbc:CompanyID/@schemeID !='' ">
-										&#160;[<xsl:apply-templates
-										select="cac:PartyLegalEntity/cbc:CompanyID/@schemeID"/>]
-								</xsl:if>
+								
 							</small>
 						</xsl:if>
 					</div>
@@ -156,9 +141,7 @@
 							<xsl:value-of
 								select="$moduleDoc/module/document-merge/g-funcs/g[@name='VAT Number']/g-lang[lang($pLang)]"
 							/> &#160;<xsl:apply-templates select="cac:PartyTaxScheme/cbc:CompanyID"/>
-							<xsl:if test="cac:PartyTaxScheme/cbc:CompanyID/@schemeID !='' ">
-									&#160;[<xsl:apply-templates
-									select="cac:PartyTaxScheme/cbc:CompanyID/@schemeID"/>] </xsl:if>
+							
 						</div>
 					</xsl:if>
 
@@ -322,11 +305,7 @@
 				<xsl:value-of
 					select="$moduleDoc/module/document-merge/g-funcs/g[@name='DeliveryLocationID']/g-lang[lang($pLang)]"
 				/> &#160;<xsl:apply-templates select="cbc:ID"/>
-				<xsl:choose>
-					<xsl:when test="cbc:ID/@schemeID !=''"> &#160;[<xsl:apply-templates
-							select="cbc:ID/@schemeID"/>] </xsl:when>
-					<xsl:otherwise> &#160;[No schemeID] </xsl:otherwise>
-				</xsl:choose>
+
 			</small>
 		</xsl:if>
 		<xsl:if test="cac:Address !=''">
