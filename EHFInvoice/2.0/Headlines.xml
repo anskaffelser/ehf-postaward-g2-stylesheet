@@ -257,7 +257,7 @@
 				<g-lang xml:lang="en">Invoice type</g-lang>
 			</g>
 			<g name="IssueDate">
-				<g-lang xml:lang="no">Utstedelsesdato</g-lang>
+				<g-lang xml:lang="no">Fakturadato</g-lang>
 				<g-lang xml:lang="en">Issue date</g-lang>
 			</g>
 			<g name="ItemClassificationCode">
@@ -372,7 +372,7 @@
 			</g>
 
 			<g name="PaymentRef">
-				<g-lang xml:lang="no">Betalingsref</g-lang>
+				<g-lang xml:lang="no">KID nr</g-lang>
 				<g-lang xml:lang="en">Payment reference/OCR</g-lang>
 			</g>
 			<g name="PaymentTerms">
@@ -542,23 +542,7 @@
 				<g-lang xml:lang="no">Total avgift</g-lang>
 				<g-lang xml:lang="en">Total VATamount</g-lang>
 			</g>
-			<g name="TechFooter1">
-				<g-lang xml:lang="no">Teknisk informasjon:</g-lang>
-				<g-lang xml:lang="en">Technical information:</g-lang>
-			</g>
-			<g name="TechFooter2">
-				<g-lang xml:lang="no">Det ovenstående representerer en måte å visualisere denne</g-lang>
-				<g-lang xml:lang="en">The above represents one way of visualizing this</g-lang>
-			</g>
-			<g name="TechFooter3">
-				<g-lang xml:lang="no">transaksjonen. Stylesheet'et er tilbudt som en nøytral og løsningsuavhengig referanse-visning for verifisering. Det baserer seg på arbeid gjort i OIOUBL og SFTI. Modifisert for EHF av Difi.</g-lang>
-				<g-lang xml:lang="en">transaction. The stylesheet is offered as a neutral, solution independent reference stylesheet for verification purposes. It is based on work done by OIOUBL and SFTI, modified for EHF by Difi.</g-lang>
-			</g>
-			<g name="TechFooter4">Technical references to this profile and transaction format are:
-				<g-lang xml:lang="no">Teknisk referanse til denne profilen og transaksjonsformatet er:</g-lang>
-				<g-lang xml:lang="en">Technical references to this profile and transaction format are:</g-lang>
-			</g>
-			<g name="Telefax">
+					<g name="Telefax">
 				<g-lang xml:lang="no">Fax:</g-lang>
 				<g-lang xml:lang="en">Fax:</g-lang>
 			</g>

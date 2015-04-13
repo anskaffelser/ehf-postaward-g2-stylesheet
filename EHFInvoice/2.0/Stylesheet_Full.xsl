@@ -63,33 +63,8 @@
 
 
 					<tr>
-						<td colspan="2">
-							<!-- Inserting Header -->
-							<xsl:if test="cbc:InvoiceTypeCode !=''">
-							<h2>
-								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='InvoiceType']/g-lang[lang($pLang)]"/>
-							</h2>
-							
-							
-								<xsl:value-of select="cbc:InvoiceTypeCode"/>&#160;
-								<xsl:if test="cbc:InvoiceTypeCode/@listID !='UNCL1001'">
-									<small>[<xsl:value-of select="cbc:InvoiceTypeCode/@listID"/> - invalid listID]</small>
-								</xsl:if>
-							</xsl:if>
-							
-						</td>
-				
-						<td valign="top" colspan="2">
-							<xsl:if test="cbc:DocumentCurrencyCode !=''">
-								<h2><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocumentCurrencyCode']/g-lang[lang($pLang)]"/>
-								</h2>
-								<xsl:value-of select="cbc:DocumentCurrencyCode"/>
-								<xsl:if test="cbc:DocumentCurrencyCode/@listID !='ISO4217'">
-									&#160;<small>[<xsl:value-of select="cbc:DocumentCurrencyCode/@listID"/>&#160;- invalid listID]</small>
-								</xsl:if>
-							</xsl:if>
-						</td>
-						<td colspan="2">
+						
+					<td colspan="4">
 
 							<h3>
 							<b>
@@ -614,86 +589,7 @@
 
 
 
-			<!-- Start on technical stylesheet footer - for all transactions -->
-				<table border="0" width="100%" cellspacing="0" cellpadding="2">
-					<tr>
-						<td>
-							<hr size="8"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-								<small>
-									<div>
-										<b>
-									<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TechFooter1']/g-lang[lang($pLang)]"/>
-									</b></div>
-									<div>
-									<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TechFooter2']/g-lang[lang($pLang)]"/>
-									&#160;<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TechFooter3']/g-lang[lang($pLang)]"/>
-									</div>
-									<div><b>
-									<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TechFooter4']/g-lang[lang($pLang)]"/>
-									</b></div>
-									<div><b>
-									<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='VersionID']/g-lang[lang($pLang)]"/>
-								</b>&#160;<xsl:value-of select="cbc:UBLVersionID"/>
-								</div>
 
-
-			<!-- Verify profile and transaction combinations: -->
-									<div><b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ProfileName']/g-lang[lang($pLang)]"/></b>&#160;
-				 				<xsl:choose>
-
-									<xsl:when test="cbc:ProfileID ='urn:www.cenbii.eu:profile:bii04:ver2.0' ">
-
-										<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ProfileInvoice']/g-lang[lang($pLang)]"/>
-
-										<xsl:if test="cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol4a:ver2.0:extended:urn:www.difi.no:ehf:faktura:ver2.0' 
-											and cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol4a:ver2.0' ">
-											&#160;<em><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='Profile-TransUnknown']"/></em>
-										</xsl:if>
-									</xsl:when>
-									<xsl:when test="cbc:ProfileID ='urn:www.cenbii.eu:profile:bii05:ver2.0' ">
-
-										<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ProfileCreditnote']/g-lang[lang($pLang)]"/>
-
-										<xsl:if test="cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns014:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0:extended:urn:www.difi.no:ehf:kreditnota:ver2.0'
-											and cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns014:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0' 
-											and cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0'
-											and cbc:CustomizationID !='urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0:extended:urn:www.difi.no:ehf:faktura:ver2.0'">
-											
-											&#160;<em><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='Profile-TransUnknown']"/></em>
-										</xsl:if>
-
-									</xsl:when>
-									<xsl:otherwise>
-										<em><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ProfileUnknown']/g-lang[lang($pLang)]"/></em>
-									</xsl:otherwise>
-								</xsl:choose>
-
-									</div>
-<div>
-									<b>	<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ProfileID']/g-lang[lang($pLang)]"/>
-								</b>&#160;<xsl:value-of select="cbc:ProfileID"/>
-</div>
-								
-									<div><b>
-									<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='CustomizationID']/g-lang[lang($pLang)]"/></b>
-								&#160;<xsl:value-of select="cbc:CustomizationID"/>
-								</div>
-								</small>
-
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<hr size="8"/>
-						</td>
-					</tr>
-				</table>
-			<!-- End of technical stylesheet footer-->
 
 			</body>
 		</html>
