@@ -557,7 +557,7 @@
 								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='Quantity']/g-lang[lang($pLang)]"/>
 							</h2>
 						</td>
-						<td valign="top">
+						<td valign="top" align="center">
 							<h2>
 								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='QuantityUnitCode']/g-lang[lang($pLang)]"/>
 							</h2>
