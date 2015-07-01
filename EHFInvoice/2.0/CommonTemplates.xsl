@@ -46,7 +46,8 @@
 
 					<small><xsl:value-of
 							select="$moduleDoc/module/document-merge/g-funcs/g[@name='PartyID']/g-lang[lang($pLang)]"
-						/> &#160;<xsl:apply-templates select="cac:PartyIdentification/cbc:ID"/>
+					/> &#160;(<xsl:apply-templates select="cac:PartyIdentification/cbc:ID/@schemeID"/>)
+						<xsl:apply-templates select="cac:PartyIdentification/cbc:ID"/>
 
 					</small>
 
@@ -448,7 +449,7 @@
 				</xsl:if>
 
 			</td>
-			<td>
+			<td align ="center">
 				<xsl:if test="cbc:InvoicedQuantity !=''">
 					<xsl:apply-templates select="cbc:InvoicedQuantity/@unitCode"/>&#160;&#160; <!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
 					<xsl:choose> <xsl:when test="cbc:InvoicedQuantity/@unitCodeListID !=''"> <xsl:if
@@ -1403,20 +1404,17 @@
 
 						<xsl:choose>
 
-							<xsl:when test="cbc:DocumentTypeCode !=''"> (&#160;<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocumentType']/g-lang[lang($pLang)]"
-								/>&#160; <xsl:apply-templates select="cbc:DocumentType"/>,
+							<xsl:when test="cbc:DocumentTypeCode !=''"> (
+							 <xsl:apply-templates select="cbc:DocumentType"/>,
 									&#160;<xsl:value-of
 									select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocumentTypeCode']/g-lang[lang($pLang)]"
-								/> &#160;<xsl:apply-templates select="cbc:DocumentTypeCode"/>
+								/> &#160;<xsl:apply-templates select="cbc:DocumentTypeCode"/> )
 								<xsl:if test="cbc:DocumentTypeCode/@listID !='UNCL1001'">
 										&#160;[<xsl:value-of select="cbc:DocumentTypeCode/@listID"
 									/>&#160;- invalid listID!]) </xsl:if>
 							</xsl:when>
 
-							<xsl:otherwise> (&#160;<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocumentType']/g-lang[lang($pLang)]"
-								/>&#160; <xsl:apply-templates select="cbc:DocumentType"/>) </xsl:otherwise>
+							<xsl:otherwise> (<xsl:apply-templates select="cbc:DocumentType"/>) </xsl:otherwise>
 
 						</xsl:choose>
 
@@ -1438,12 +1436,10 @@
 
 	<xsl:template match="cac:Attachment">
 		<!-- No processing of attached document, just info: -->
+		
 		<xsl:if test="cbc:EmbeddedDocumentBinaryObject/@mimeCode !=''">
 			<xsl:value-of
-				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo1']/g-lang[lang($pLang)]"
-			/> &#160;<xsl:value-of
-				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo2']/g-lang[lang($pLang)]"
-			/>&#160; <xsl:apply-templates select="cbc:EmbeddedDocumentBinaryObject/@mimeCode"/>
+				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo1']/g-lang[lang($pLang)]"/>  
 		</xsl:if>
 		<xsl:if test="cbc:EmbeddedDocumentBinaryObject/@format !=''"> &#160;<xsl:value-of
 				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo4']/g-lang[lang($pLang)]"

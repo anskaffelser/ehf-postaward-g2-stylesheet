@@ -41,20 +41,25 @@
 	<xsl:include href="CommonTemplates.xsl"/>
 	<xsl:output method="html" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" doctype-system="http://www.w3.org/TR/html4/loose.dtd" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-
-
+	<xsl:variable name="sti-dir"><!--Add path to PEPPOL.Css file--></xsl:variable>
 	
 	<xsl:template match="/">
 		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template match="n1:Invoice | n2:CreditNote">
+		
+		
+		
 		<!-- Start HTML -->
 		<html>
 			<head>
-				<link rel="Stylesheet" type="text/css" href="PEPPOL.css"/>
+
+				<link rel="Stylesheet" type="text/css" href="{$sti-dir}PEPPOL.CSS"/>
+
 				<title>EHF Faktura og kreditnota</title>
 			</head>
+	
 			<body>
 				<!-- Start on header-->
 				 
@@ -557,7 +562,7 @@
 								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='Quantity']/g-lang[lang($pLang)]"/>
 							</h2>
 						</td>
-						<td valign="top">
+						<td valign="top" align="center">
 							<h2>
 								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='QuantityUnitCode']/g-lang[lang($pLang)]"/>
 							</h2>

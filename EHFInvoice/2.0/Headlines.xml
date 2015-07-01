@@ -86,8 +86,8 @@
 			</g>
 			
 			<g name="AttachmentInfo1">
-				<g-lang xml:lang="no">NB - Vedlegget er et binært object som ikke kan vises i denne visningsfilen!</g-lang>
-				<g-lang xml:lang="en">NB - The attachment is a binary object that cannot be visualised with this stylesheet!</g-lang>
+				<g-lang xml:lang="no">Vedlegget kan ikke vises</g-lang>
+				<g-lang xml:lang="en">Attachment cannot be shown</g-lang>
 			</g>
 			<g name="AttachmentInfo2">
 				<g-lang xml:lang="no">Mimecode til dette objektet er:</g-lang>
@@ -210,8 +210,8 @@
 			</g>
 			
 			<g name="DocumentTypeCode">
-				<g-lang xml:lang="no">Dokumenttype, kodet:</g-lang>
-				<g-lang xml:lang="en">Document type code:</g-lang>
+				<g-lang xml:lang="no">Dok.type:</g-lang>
+				<g-lang xml:lang="en">Doc. type:</g-lang>
 			</g>
 			<g name="ElectronicMail">
 				<g-lang xml:lang="no">Epost:</g-lang>
@@ -326,8 +326,8 @@
 				<g-lang xml:lang="en">Country of origin:</g-lang>
 			</g>
 			<g name="PartyID">
-				<g-lang xml:lang="no">PartyID:</g-lang>
-				<g-lang xml:lang="en">PartyID:</g-lang>
+				<g-lang xml:lang="no">ID:</g-lang>
+				<g-lang xml:lang="en">ID:</g-lang>
 			</g>
 			<g name="PayableAmountInv">
 				<g-lang xml:lang="no">Betalingsbeløp</g-lang>
@@ -427,7 +427,7 @@
 			
 
 			<g name="Quantity">
-				<g-lang xml:lang="no">Kvantitet</g-lang>
+				<g-lang xml:lang="no">Antall</g-lang>
 				<g-lang xml:lang="en">Quantity</g-lang>
 			</g>
 			<g name="QuantityUnitCode">
