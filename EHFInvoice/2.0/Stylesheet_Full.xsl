@@ -54,14 +54,9 @@
 		<!-- Start HTML -->
 		<html>
 			<head>
-<<<<<<< Updated upstream
-				<meta charset="utf-8" /> 
-				<link rel="Stylesheet" type="text/css" href="PEPPOL.css"/>
-=======
-								
+
 				<link rel="Stylesheet" type="text/css" href="{$sti-dir}PEPPOL.CSS"/>
-				
->>>>>>> Stashed changes
+
 				<title>EHF Faktura og kreditnota</title>
 			</head>
 	
