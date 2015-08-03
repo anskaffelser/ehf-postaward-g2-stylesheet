@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator">
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
 
     <configuration>
         <identifier>ehf-t10-stylesheet-2.0</identifier>
