@@ -4,9 +4,9 @@
     <configuration>
         <identifier>ehf-t10-stylesheet-2.0</identifier>
         <title>EHF Invoice 2.0 Stylesheet</title>
-		<stylesheet source="Stylesheet_Full.xsl" path="stylesheet_ehf_t10/Stylesheet_Full.xsl">
-			<setting>pLang</setting>
-			<setting>sti-dir</setting>
+		<stylesheet identifier="ehf-t10-2" source="Stylesheet_Full.xsl" path="stylesheet_ehf_t10/Stylesheet_Full.xsl">
+			<setting name="pLang" defaultValue="no" />
+			<setting name="sti-dir" defaultValue="" />
 		</stylesheet>
     </configuration>
 
