@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+  <package url="http://vefa.difi.no/ehf/tools/ehf-stylesheets/">EHF Stylesheets 15.10</package>
+
+</buildConfigurations>
