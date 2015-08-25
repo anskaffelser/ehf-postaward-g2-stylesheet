@@ -41,10 +41,8 @@
 	<xsl:include href="CommonTemplates.xsl"/>
 	<xsl:output method="html" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" doctype-system="http://www.w3.org/TR/html4/loose.dtd" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:param name="pStylesheetDir" select="'/Users/Siw/vefa-ehf-xslt/EHFInvoice/'"/>
-	<!--
-	<xsl:variable name="sti-dir">Add path to PEPPOL.Css file
-	</xsl:variable>-->
+	<xsl:param name="pStylesheetDir" select="<!--Add path to PEPPOL.Css file--></xsl:param>"/>
+
 	
 	<xsl:template match="/">
 		<xsl:apply-templates/>
