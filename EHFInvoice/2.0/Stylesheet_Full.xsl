@@ -41,7 +41,10 @@
 	<xsl:include href="CommonTemplates.xsl"/>
 	<xsl:output method="html" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" doctype-system="http://www.w3.org/TR/html4/loose.dtd" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:variable name="sti-dir"><!--Add path to PEPPOL.Css file--></xsl:variable>
+	<xsl:param name="pStylesheetDir" select="'/Users/Siw/vefa-ehf-xslt/EHFInvoice/'"/>
+	<!--
+	<xsl:variable name="sti-dir">Add path to PEPPOL.Css file
+	</xsl:variable>-->
 	
 	<xsl:template match="/">
 		<xsl:apply-templates/>
@@ -55,7 +58,7 @@
 		<html>
 			<head>
 
-				<link rel="Stylesheet" type="text/css" href="{$sti-dir}PEPPOL.CSS"/>
+				<link rel="Stylesheet" type="text/css" href="{$pStylesheetDir}PEPPOL.CSS"/>
 
 				<title>EHF Faktura og kreditnota</title>
 			</head>
