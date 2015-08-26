@@ -41,7 +41,8 @@
 	<xsl:include href="CommonTemplates.xsl"/>
 	<xsl:output method="html" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" doctype-system="http://www.w3.org/TR/html4/loose.dtd" indent="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:param name="pStylesheetDir" select="<!--Add path to PEPPOL.Css file--></xsl:param>"/>
+	<!--Add path to PEPPOL.css file in select attribute, if located in another folder-->
+	<xsl:param name="pStylesheetDir" select="''"></xsl:param>
 
 	
 	<xsl:template match="/">
