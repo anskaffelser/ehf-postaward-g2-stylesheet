@@ -6,7 +6,7 @@
         <title>EHF Invoice 2.0 Stylesheet</title>
 		<stylesheet identifier="ehf-t10-2" source="Stylesheet_Full.xsl" path="stylesheet_ehf_t10/Stylesheet_Full.xsl">
 			<setting name="pLang" defaultValue="no" />
-			<setting name="sti-dir" defaultValue="" />
+			<setting name="pStylesheetDir" defaultValue="" />
 		</stylesheet>
     </configuration>
 
