@@ -75,11 +75,12 @@
 
 							<h3>
 							<b>
-								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='IssueDate']/g-lang[lang($pLang)]"/>&#160;</b>
+								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='IssueDate']/g-lang[lang($pLang)]"/></b>&#160;
 							<!-- Inserting Invoice Date -->
-							<br/><xsl:value-of select="cbc:IssueDate"/>
+							<xsl:value-of select="cbc:IssueDate"/>
 
 							</h3>
+						<br/>
 						</td>
 						<td colspan="2">
 							
@@ -92,13 +93,17 @@
 									<xsl:otherwise>
 										<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='CreditNoteID']/g-lang[lang($pLang)]"/>
 									</xsl:otherwise>
-								</xsl:choose>
-							</b></h3>
-							<!-- Inserting Invoice ID -->
-								<br/><xsl:value-of select="cbc:ID"/>
-
+								</xsl:choose></b>
+								&#160;
 							
+							<!-- Inserting Invoice ID -->
+								<xsl:value-of select="cbc:ID"/>
+
+							</h3>
+							<br/>
 						</td>
+						
+						
 
 					</tr>
 					
