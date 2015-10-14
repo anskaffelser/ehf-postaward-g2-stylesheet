@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+ <!--
 ******************************************************************************************************************
 
 		PEPPOL Instance Documentation	
@@ -25,9 +25,12 @@
 	xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"
 	exclude-result-prefixes="n1 n2 cac cbc ccts sdt udt">
 	<!--Language parameters-->
-	<xsl:param name="pLang" select="'no'"/>
+	<xsl:param name="pLang" select="'en'"/>
 	<xsl:variable name="moduleDoc" select="document('Headlines.xml')"/>
-
+	<!--UomText/Code parameters-->
+	<xsl:param name="pUoMText" select="'not'"/>
+	<xsl:variable name="vcodeText" select="document('UomText.xml')"/>
+	
 
 	<!--Party templates from here:-->
 	<xsl:template match=" cac:AccountingSupplierParty | cac:AccountingCustomerParty">
@@ -427,6 +430,8 @@
 
 	<!--Invoiceline start: -->
 	<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine">
+		
+		<xsl:param name="pUoM" select="cbc:InvoicedQuantity/@unitCode"/>
 		<tr>
 			<td>
 				<xsl:apply-templates select="cbc:ID"/>
@@ -451,7 +456,18 @@
 			</td>
 			<td align ="center">
 				<xsl:if test="cbc:InvoicedQuantity !=''">
-					<xsl:apply-templates select="cbc:InvoicedQuantity/@unitCode"/>&#160;&#160; <!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
+					<!--Checking of parameter to set output of unitcodes to text or code -->
+					<xsl:choose>
+						<xsl:when test="$pUoMText = 'yes' and $vcodeText/uomText/uom[@key = $pUoM]">
+							<xsl:apply-templates select="$vcodeText/uomText/uom[@key = $pUoM]/tekst[lang($pLang)]"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates select="cbc:InvoicedQuantity/@unitCode"/>
+						</xsl:otherwise>
+					</xsl:choose>&#160;&#160; 
+					
+			
+					<!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
 					<xsl:choose> <xsl:when test="cbc:InvoicedQuantity/@unitCodeListID !=''"> <xsl:if
 								test="cbc:InvoicedQuantity/@unitCodeListID != 'UNECERec20'">
 											&#160;<small><em>[<xsl:apply-templates
@@ -462,7 +478,17 @@
 				</xsl:if>
 
 				<xsl:if test="cbc:CreditedQuantity !=''">
-					<xsl:apply-templates select="cbc:CreditedQuantity/@unitCode"/>&#160;&#160; <!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
+					<!--Checking of parameter to set output of unitcodes to text or code -->
+					<xsl:choose>
+						<xsl:when test="$pUoMText = 'yes' and $vcodeText/uomText/uom[@key = $pUoM]">
+							<xsl:apply-templates select="$vcodeText/uomText/uom[@key = $pUoM]/tekst[lang($pLang)]"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates select="cbc:CreditedQuantity/@unitCode"/>
+						</xsl:otherwise>
+					</xsl:choose>&#160;&#160; 
+					
+					<!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
 					<xsl:choose> <xsl:when test="cbc:CreditedQuantity/@unitCodeListID !=''"> <xsl:if
 								test="cbc:CreditedQuantity/@unitCodeListID != 'UNECERec20'">
 											&#160;<small><em>[<xsl:apply-templates
