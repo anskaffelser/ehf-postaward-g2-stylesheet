@@ -2,4 +2,4 @@
 
 Version: **16.05**
 <br />
-Release date: 2016-05-23
+Release date: **2016-05-23**
