@@ -2,7 +2,7 @@
 <!--
 
 -->
-<module xmlns:mmx="http://funx" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:fnc="http://funx/fnc" xmlns:att="http://funx/att" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<module xmlns:mmx="http://funx" xmlns:svg="http://www.w3.org/2000/svg" xmlns:fnc="http://funx/fnc" xmlns:att="http://funx/att" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 	<document-merge>
 		<g-funcs>
@@ -16,7 +16,7 @@
 				<g-lang xml:lang="nn">Konteringsstreng</g-lang>
 				<g-lang xml:lang="en">Accounting cost code</g-lang>
 			</g>
-			
+
 			<g name="AccountingCustomerInv">
 				<g-lang xml:lang="no">Kunde</g-lang>
 				<g-lang xml:lang="nn">Kunde</g-lang>
@@ -27,7 +27,7 @@
 				<g-lang xml:lang="nn">Leverandør</g-lang>
 				<g-lang xml:lang="en">Supplier</g-lang>
 			</g>
-			<g name="AccCusContact">		
+			<g name="AccCusContact">
 				<g-lang xml:lang="no">Kundens kontaktinformasjon</g-lang>
 				<g-lang xml:lang="nn">Kundens kontaktinformasjon</g-lang>
 				<g-lang xml:lang="en">Customer's contact information</g-lang>
@@ -59,7 +59,7 @@
 				<g-lang xml:lang="en">Region:</g-lang>
 			</g>
 
-			<g name="AllowanceCharge(Line">
+			<g name="AllowanceCharge(Line)">
 				<g-lang xml:lang="no">Rabatt og gebyr på linjenivå</g-lang>
 				<g-lang xml:lang="nn">Rabatt og gebyr på linjenivå</g-lang>
 				<g-lang xml:lang="en">Allowance/Charge(line)</g-lang>
@@ -102,7 +102,7 @@
 				<g-lang xml:lang="nn">Beløp:</g-lang>
 				<g-lang xml:lang="en">Amount:</g-lang>
 			</g>
-			
+
 			<g name="AttachmentInfo1">
 				<g-lang xml:lang="no">Vedlegget kan ikke vises</g-lang>
 				<g-lang xml:lang="nn">Vedlegget kan ikkje visast</g-lang>
@@ -125,7 +125,7 @@
 				<g-lang xml:lang="nn">Format:</g-lang>
 				<g-lang xml:lang="en">Format:</g-lang>
 			</g>
-			
+
 			<g name="BasedOnAmount">
 				<g-lang xml:lang="no">basert på</g-lang>
 				<g-lang xml:lang="nn">basert på</g-lang>
@@ -167,7 +167,7 @@
 				<g-lang xml:lang="nn">Gebyr</g-lang>
 				<g-lang xml:lang="en">Charge</g-lang>
 			</g>
-			
+
 			<g name="ChargeIndicatorFalse">
 				<g-lang xml:lang="no">Rabatt</g-lang>
 				<g-lang xml:lang="nn">Rabatt</g-lang>
@@ -178,13 +178,13 @@
 				<g-lang xml:lang="nn">Sum gebyr</g-lang>
 				<g-lang xml:lang="en">Total charges</g-lang>
 			</g>
-			
+
 			<g name="CompanyID">
 				<g-lang xml:lang="no">Organisasjonsnummer:</g-lang>
 				<g-lang xml:lang="nn">Organisasjonsnummer:</g-lang>
 				<g-lang xml:lang="en">Company LegalID:</g-lang>
 			</g>
-			
+
 			<g name="CommodityCode">
 				<g-lang xml:lang="no">Varekode:</g-lang>
 				<g-lang xml:lang="nn">Varekode:</g-lang>
@@ -195,19 +195,19 @@
 				<g-lang xml:lang="nn">ID:</g-lang>
 				<g-lang xml:lang="en">ID:</g-lang>
 			</g>
-			
+
 			<g name="ContractDocumentReference">
 				<g-lang xml:lang="no">Kontraktsidentifikator</g-lang>
 				<g-lang xml:lang="nn">Kontraktsidentifikator</g-lang>
 				<g-lang xml:lang="en">Contract document reference</g-lang>
 			</g>
-			
+
 			<g name="CreditNoteDocumentReference">
 				<g-lang xml:lang="no">Kreditnota referanse:</g-lang>
 				<g-lang xml:lang="nn">Kreditnota referanse:</g-lang>
 				<g-lang xml:lang="en">Creditnote reference:</g-lang>
 			</g>
-	
+
 			<g name="CreditNoteID">
 				<g-lang xml:lang="no">Kreditnotanr.</g-lang>
 				<g-lang xml:lang="nn">Kreditnotanr.</g-lang>
@@ -218,7 +218,7 @@
 				<g-lang xml:lang="nn">- Tilpasningsidentifikator:</g-lang>
 				<g-lang xml:lang="en">- CustomizationID:</g-lang>
 			</g>
-			
+
 			<g name="DeliveryLocation">
 				<g-lang xml:lang="no">Leveringssted</g-lang>
 				<g-lang xml:lang="nn">Leveringsstad</g-lang>
@@ -246,13 +246,13 @@
 				<g-lang xml:lang="nn">Dokumentets valutakode</g-lang>
 				<g-lang xml:lang="en">Document currency</g-lang>
 			</g>
-				
+
 			<g name="DocumentType">
 				<g-lang xml:lang="no">Dokumenttype</g-lang>
 				<g-lang xml:lang="nn">Dokumenttype</g-lang>
 				<g-lang xml:lang="en">Document type:</g-lang>
 			</g>
-			
+
 			<g name="DocumentTypeCode">
 				<g-lang xml:lang="no">Dok.type:</g-lang>
 				<g-lang xml:lang="nn">Dok.type:</g-lang>
@@ -305,7 +305,7 @@
 				<g-lang xml:lang="nn">Periode</g-lang>
 				<g-lang xml:lang="en">Invoicing period</g-lang>
 			</g>
-			
+
 			<g name="InvoiceType">
 				<g-lang xml:lang="no">Fakturatype</g-lang>
 				<g-lang xml:lang="nn">Fakturatype</g-lang>
@@ -357,33 +357,33 @@
 				<g-lang xml:lang="nn">Avgift</g-lang>
 				<g-lang xml:lang="en">Tax details</g-lang>
 			</g>
-			
+
 			<g name="ManufacturerID">
 				<g-lang xml:lang="no">Org.nr:</g-lang>
 				<g-lang xml:lang="nn">Org.nr:</g-lang>
 				<g-lang xml:lang="en">ID:</g-lang>
 			</g>
-			
+
 			<g name="ManufacturerName">
 				<g-lang xml:lang="no">Produsent, navn:</g-lang>
 				<g-lang xml:lang="nn">Produsent, namn:</g-lang>
 				<g-lang xml:lang="en">Manufacturer, name:</g-lang>
 			</g>
-			
+
 
 			<g name="MathematicOperatorCode">
 				<g-lang xml:lang="no">Operand</g-lang>
 				<g-lang xml:lang="nn">Operand</g-lang>
 				<g-lang xml:lang="en">Operator</g-lang>
 			</g>
-			
+
 
 			<g name="OrderLineReferenceID">
 				<g-lang xml:lang="no">Ordrelinje referanse:</g-lang>
 				<g-lang xml:lang="nn">Ordrelinje referanse:</g-lang>
 				<g-lang xml:lang="en">Orderline reference:</g-lang>
 			</g>
-			
+
 			<g name="OrderReferenceID">
 				<g-lang xml:lang="no">Ordre-/bestillingsnummer</g-lang>
 				<g-lang xml:lang="nn">Ordre-/bestillingsnummer</g-lang>
@@ -435,7 +435,7 @@
 				<g-lang xml:lang="nn">Forfallsdato</g-lang>
 				<g-lang xml:lang="en">Due date</g-lang>
 			</g>
-			<g name="PaymentChannelCode">		
+			<g name="PaymentChannelCode">
 				<g-lang xml:lang="no">Betalingskanal</g-lang>
 				<g-lang xml:lang="nn">Betalingskanal</g-lang>
 				<g-lang xml:lang="en">Paym. channel	</g-lang>
@@ -446,7 +446,7 @@
 				<g-lang xml:lang="en">Payment means</g-lang>
 			</g>
 
-			<g name="PaymentMeansCode">				
+			<g name="PaymentMeansCode">
 				<g-lang xml:lang="no">Betalingstype</g-lang>
 				<g-lang xml:lang="nn">Betalingstype</g-lang>
 				<g-lang xml:lang="en">Means code</g-lang>
@@ -462,7 +462,7 @@
 				<g-lang xml:lang="nn">Betalingsbetingelsar:</g-lang>
 				<g-lang xml:lang="en">Payment terms</g-lang>
 			</g>
-			<g name="PeriodEndDate">			
+			<g name="PeriodEndDate">
 				<g-lang xml:lang="no">Til:</g-lang>
 				<g-lang xml:lang="nn">Til:</g-lang>
 				<g-lang xml:lang="en">To:</g-lang>
@@ -478,7 +478,7 @@
 				<g-lang xml:lang="en">Prepaid amount</g-lang>
 			</g>
 
-			<g name="PriceUnit">			
+			<g name="PriceUnit">
 				<g-lang xml:lang="no">Enhetspris</g-lang>
 				<g-lang xml:lang="nn">Einingspris</g-lang>
 				<g-lang xml:lang="en">Net unit price</g-lang>
@@ -517,7 +517,7 @@
 				<g-lang xml:lang="nn">Feil: Kjenner ikkje igjen profilen, vennligst verifiser profil ID og visningsfil</g-lang>
 				<g-lang xml:lang="en">Error: The profile is not recognised. Verify profile and stylesheet combination.</g-lang>
 			</g>
-			
+
 
 			<g name="Quantity">
 				<g-lang xml:lang="no">Antall</g-lang>
@@ -562,7 +562,7 @@
 				<g-lang xml:lang="en">to</g-lang>
 			</g>
 
-			<g name="TAXAmountInf">			
+			<g name="TAXAmountInf">
 				<g-lang xml:lang="no">MVA beløp</g-lang>
 				<g-lang xml:lang="nn">MVA beløp</g-lang>
 				<g-lang xml:lang="en">Tax amount</g-lang>
@@ -684,7 +684,7 @@
 				<g-lang xml:lang="en">Tax amount in nat. currency</g-lang>
 			</g>
 
-			<g name="UnitNetPriceIncl">		
+			<g name="UnitNetPriceIncl">
 				<g-lang xml:lang="no">Netto enhetspris inkluderer:</g-lang>
 				<g-lang xml:lang="nn">Netto einingsspris inkluderar:</g-lang>
 				<g-lang xml:lang="en">Net unit price includes:</g-lang>

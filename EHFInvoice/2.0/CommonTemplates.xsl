@@ -2,20 +2,19 @@
  <!--
 ******************************************************************************************************************
 
-		PEPPOL Instance Documentation	
+		PEPPOL Instance Documentation
 
-		title= CommonTemplates.xml	
+		title= CommonTemplates.xml
 		publisher= Difi
 		created= 2014-02-12
 		conformsTo= UBL-Invoice-2.1.xsd
 		description= "Common templates for displaying EHF Invoice and creditnote, version 2.0"
-		
-		Derived from work by SFTI, Sweden and OIOUBL, Denmark. 
-		
+
+		Derived from work by SFTI, Sweden and OIOUBL, Denmark.
+
 ******************************************************************************************************************
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:n1="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
 	xmlns:n2="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
@@ -30,7 +29,7 @@
 	<!--UomText/Code parameters-->
 	<xsl:param name="pUoMText" select="'not'"/>
 	<xsl:variable name="vcodeText" select="document('UomText.xml')"/>
-	
+
 
 	<!--Party templates from here:-->
 	<xsl:template match=" cac:AccountingSupplierParty | cac:AccountingCustomerParty">
@@ -42,7 +41,7 @@
 		<div class="UBLPayeeParty">
 			<xsl:apply-templates select="cac:PartyName"/>
 			<xsl:apply-templates select="cac:PostalAddress"/>
-			
+
 			<div>
 				<xsl:if test="cac:PartyIdentification/cbc:ID">
 
@@ -68,7 +67,7 @@
 									select="$moduleDoc/module/document-merge/g-funcs/g[@name='CompanyID']/g-lang[lang($pLang)]"
 								/> &#160;<xsl:apply-templates
 									select="cac:PartyLegalEntity/cbc:CompanyID"/>
-								
+
 							</small>
 						</xsl:if>
 					</div>
@@ -99,7 +98,7 @@
 							<xsl:choose>
 
 								<xsl:when
-									test="cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName !='' and 
+									test="cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName !='' and
 
 							cac:PartyLegalEntity/cac:RegistrationAddress/cac:Country !=''"
 									> &#160;<xsl:apply-templates
@@ -138,14 +137,14 @@
 			<!--Party VAT registration: -->
 
 			<xsl:if test="cac:PartyTaxScheme">
-				<small>
+				<div class="small">
 
 					<xsl:if test="cac:PartyTaxScheme">
 						<div>
 							<xsl:value-of
 								select="$moduleDoc/module/document-merge/g-funcs/g[@name='VAT Number']/g-lang[lang($pLang)]"
 							/> &#160;<xsl:apply-templates select="cac:PartyTaxScheme/cbc:CompanyID"/>
-							
+
 						</div>
 					</xsl:if>
 
@@ -159,7 +158,7 @@
 					</xsl:if>
 
 
-				</small>
+				</div>
 			</xsl:if>
 		</div>
 	</xsl:template>
@@ -262,9 +261,9 @@
 			<xsl:if test="cbc:IdentificationCode/@listID !=''">
 
 				<xsl:if test="cbc:IdentificationCode/@listID !='ISO3166-1:Alpha2'">
-								&#160;<small><em>[<xsl:apply-templates
+								&#160;<em class="small">[<xsl:apply-templates
 								select="cbc:IdentificationCode/@listID"/> &#160;-invalid
-							listID]</em></small>
+							listID]</em>
 				</xsl:if>
 
 
@@ -277,7 +276,7 @@
 	<!--Delivery templates start: -->
 
 	<xsl:template match="cac:Delivery" mode="DocumentHeader">
-		<td valign="top" colspan="2">
+		<td colspan="2">
 			<xsl:if test="cbc:ActualDeliveryDate !='' ">
 				<xsl:if test="cbc:ActualDeliveryDate !=''">
 					<h2>
@@ -290,7 +289,7 @@
 			</xsl:if>
 		</td>
 		<xsl:if test="cac:DeliveryLocation !=''">
-			<td valign="top" colspan="2">
+			<td colspan="2">
 				<h2>
 					<xsl:value-of
 						select="$moduleDoc/module/document-merge/g-funcs/g[@name='DeliveryLocation']/g-lang[lang($pLang)]"
@@ -322,7 +321,7 @@
 	<xsl:template match="cac:Delivery" mode="line-new">
 
 		<tr>
-			<td valign="top">
+			<td>
 
 				<small>
 					<xsl:if test="cbc:ActualDeliveryDate !=''">
@@ -336,9 +335,7 @@
 			</td>
 
 			<xsl:if test="cac:DeliveryLocation !=''">
-				<td valign="top">
-
-					<small>
+				<td class="small">
 
 						<h2>
 							<xsl:value-of
@@ -361,7 +358,6 @@
 						<xsl:if test="cac:DeliveryLocation/cac:Address !=''">
 							<xsl:apply-templates select="cac:DeliveryLocation/cac:Address"/>&#160; </xsl:if>
 
-					</small>
 				</td>
 
 			</xsl:if>
@@ -430,7 +426,7 @@
 
 	<!--Invoiceline start: -->
 	<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine">
-		
+
 		<xsl:param name="pUoM" select="cbc:InvoicedQuantity/@unitCode"/>
 		<tr>
 			<td>
@@ -442,7 +438,7 @@
 			<td>
 				<xsl:apply-templates select="cac:Item/cbc:Name"/>
 			</td>
-			<td align="right">
+			<td class="right">
 				<xsl:if test="cbc:InvoicedQuantity !=''">
 
 					<xsl:apply-templates select="cbc:InvoicedQuantity"/>
@@ -454,7 +450,7 @@
 				</xsl:if>
 
 			</td>
-			<td align ="center">
+			<td class="center">
 				<xsl:if test="cbc:InvoicedQuantity !=''">
 					<!--Checking of parameter to set output of unitcodes to text or code -->
 					<xsl:choose>
@@ -464,17 +460,20 @@
 						<xsl:otherwise>
 							<xsl:apply-templates select="cbc:InvoicedQuantity/@unitCode"/>
 						</xsl:otherwise>
-					</xsl:choose>&#160;&#160; 
-					
-			
+					</xsl:choose>&#160;&#160;
+
+
 					<!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
-					<xsl:choose> <xsl:when test="cbc:InvoicedQuantity/@unitCodeListID !=''"> <xsl:if
-								test="cbc:InvoicedQuantity/@unitCodeListID != 'UNECERec20'">
-											&#160;<small><em>[<xsl:apply-templates
-											select="cbc:InvoicedQuantity/@unitCodeListID"/>
-										&#160;-invalid unitCodeListID]</em></small>
-							</xsl:if> </xsl:when> <xsl:otherwise> <small>&#160;<em>[No
-									unitCodeListID]</em></small> </xsl:otherwise> </xsl:choose>
+					<xsl:choose>
+						<xsl:when test="cbc:InvoicedQuantity/@unitCodeListID !=''">
+							<xsl:if test="cbc:InvoicedQuantity/@unitCodeListID != 'UNECERec20'">
+											&#160;<em class="small">[<xsl:apply-templates select="cbc:InvoicedQuantity/@unitCodeListID"/>&#160;-invalid unitCodeListID]</em>
+							</xsl:if>
+						</xsl:when>
+						<xsl:otherwise>
+							<em class="small">&#160;[No unitCodeListID]</em>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:if>
 
 				<xsl:if test="cbc:CreditedQuantity !=''">
@@ -486,16 +485,19 @@
 						<xsl:otherwise>
 							<xsl:apply-templates select="cbc:CreditedQuantity/@unitCode"/>
 						</xsl:otherwise>
-					</xsl:choose>&#160;&#160; 
-					
+					</xsl:choose>&#160;&#160;
+
 					<!-- Checking of unitCodeListID (NOT a normal control function of a stylesheet): -->
-					<xsl:choose> <xsl:when test="cbc:CreditedQuantity/@unitCodeListID !=''"> <xsl:if
-								test="cbc:CreditedQuantity/@unitCodeListID != 'UNECERec20'">
-											&#160;<small><em>[<xsl:apply-templates
-											select="cbc:CreditedQuantity/@unitCodeListID"/>
-										&#160;-invalid unitCodeListID]</em></small>
-							</xsl:if> </xsl:when> <xsl:otherwise> <small>&#160;<em>[No
-									unitCodeListID]</em></small> </xsl:otherwise> </xsl:choose>
+					<xsl:choose>
+						<xsl:when test="cbc:CreditedQuantity/@unitCodeListID !=''">
+							<xsl:if test="cbc:CreditedQuantity/@unitCodeListID != 'UNECERec20'">
+							  &#160;<small><em>[<xsl:apply-templates select="cbc:CreditedQuantity/@unitCodeListID"/>&#160;-invalid unitCodeListID]</em></small>
+							</xsl:if>
+						</xsl:when>
+						<xsl:otherwise>
+							<em class="small">&#160;[No unitCodeListID]</em>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:if>
 
 			</td>
@@ -503,7 +505,7 @@
 				<xsl:apply-templates select="cac:Price"/>
 				<xsl:if test="cac:Price/cbc:BaseQuantity">
 
-					<small>
+					<div class="small">
 						<div>
 						per&#160;<xsl:apply-templates select="cac:Price/cbc:BaseQuantity"/>
 							&#160;<xsl:apply-templates select="cac:Price/cbc:BaseQuantity/@unitCode"/>
@@ -518,11 +520,8 @@
 									</xsl:if>
 								</xsl:if>
 								<xsl:if test="cac:Price/cbc:BaseQuantity/@unitCodeListID != ''">
-									<xsl:if
-										test="cac:Price/cbc:BaseQuantity/@unitCodeListID != cbc:InvoicedQuantity/@unitCodeListID"
-										> &#160;<small><em>[<xsl:apply-templates
-												select="cac:Price/cbc:BaseQuantity/@unitCodeListID"
-												/> &#160;-invalid unitCodeListID]</em></small>
+									<xsl:if test="cac:Price/cbc:BaseQuantity/@unitCodeListID != cbc:InvoicedQuantity/@unitCodeListID">
+										&#160;<small><em>[<xsl:apply-templates select="cac:Price/cbc:BaseQuantity/@unitCodeListID"/> &#160;-invalid unitCodeListID]</em></small>
 									</xsl:if>
 								</xsl:if>
 							</xsl:when>
@@ -544,7 +543,7 @@
 								</xsl:if>
 							</xsl:when> <xsl:otherwise/>
 						</xsl:choose>
-					</small>
+					</div>
 				</xsl:if>
 
 			</td>
@@ -607,7 +606,7 @@
 					<xsl:apply-templates select="cac:AllowanceCharge" mode="LineLevel-new"/>
 				</xsl:if>
 			</td>
-			<td align="right">
+			<td class="right">
 				<xsl:apply-templates select="cbc:LineExtensionAmount"/> &#160;<xsl:apply-templates
 					select="cbc:LineExtensionAmount/@currencyID"/>
 			</td>
@@ -615,159 +614,149 @@
 
 		<tr>
 			<!-- Invoice line/part 2: -->
-			<td> </td>
-			<td> </td>
-
-			<td>
-				<small>
-					<xsl:if test="cac:Item/cac:StandardItemIdentification/cbc:ID !=''">
-						<div>
-							<b>
-								<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='StandardItemIdentification']/g-lang[lang($pLang)]"
-								/>&#160;</b>
-							<xsl:apply-templates
-								select="cac:Item/cac:StandardItemIdentification/cbc:ID"/>
-
-							<xsl:choose>
-								<xsl:when
-									test="cac:Item/cac:StandardItemIdentification/cbc:ID/@schemeID !=''">
-									<small>&#160;[<xsl:apply-templates
-											select="cac:Item/cac:StandardItemIdentification/cbc:ID/@schemeID"
-										/>]</small>
-								</xsl:when>
-								<xsl:otherwise>
-									<small>&#160;[No schemeID]</small>
-								</xsl:otherwise>
-							</xsl:choose>
-						</div>
-					</xsl:if>
-					<xsl:if test="cac:Item/cbc:Description !=''">
-						<div>
-							<b>
-								<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='ItemDescription']/g-lang[lang($pLang)]"
-								/>&#160;</b>
-							<xsl:apply-templates select="cac:Item/cbc:Description"/>
-						</div>
-					</xsl:if>
-
-					<xsl:if test="cac:Item/cac:AdditionalItemProperty !=''">
-						<xsl:apply-templates select="cac:Item/cac:AdditionalItemProperty"/>
-					</xsl:if>
-
-					<xsl:if test="cbc:Note !=''">
-						<div>
-							<b>
-								<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineNotes']/g-lang[lang($pLang)]"
-								/>&#160;</b>
-							<xsl:apply-templates select="cbc:Note"/>
-						</div>
-					</xsl:if>
-					<xsl:if test="cac:Item/cac:CommodityClassification !=''">
-						<xsl:apply-templates select="cac:Item/cac:CommodityClassification"/>
-					</xsl:if>
-
-					<xsl:if test="cbc:AccountingCost !=''">
-						<div>
-							<b>
-								<xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='AccountingCost']/g-lang[lang($pLang)]"
-								/>&#160;</b>: <xsl:apply-templates select="cbc:AccountingCost"/>
-						</div>
-					</xsl:if>
-
-					<xsl:if test="cac:InvoicePeriod !=''">
-						<div>
-							<b><xsl:value-of
-									select="$moduleDoc/module/document-merge/g-funcs/g[@name='InvoicePeriod']/g-lang[lang($pLang)]"
-								/></b>&#160; <xsl:apply-templates select="cac:InvoicePeriod"/>
-						</div>
-
-					</xsl:if>
-
-
-					<xsl:if test="cac:Price/cac:AllowanceCharge !=''">
-						<xsl:apply-templates select="cac:Price/cac:AllowanceCharge"
-							mode="PriceUnit-new"/>
-					</xsl:if>
-
-					<xsl:if test="cac:Item/cac:OriginCountry/cbc:IdentificationCode !=''">
-						<div>
+			<td colspan="2">&#160;</td>
+			<td class="small">
+				<xsl:if test="cac:Item/cac:StandardItemIdentification/cbc:ID !=''">
+					<div>
 						<b>
 							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='OriginCountry']/g-lang[lang($pLang)]"
+								select="$moduleDoc/module/document-merge/g-funcs/g[@name='StandardItemIdentification']/g-lang[lang($pLang)]"
 							/>&#160;</b>
 						<xsl:apply-templates
-							select="cac:Item/cac:OriginCountry/cbc:IdentificationCode"/>
+							select="cac:Item/cac:StandardItemIdentification/cbc:ID"/>
 
-						<xsl:if
-							test="cac:Item/cac:OriginCountry/cbc:IdentificationCode/@listID !=''">
-							<small>&#160;[<xsl:apply-templates
-									select="cac:Item/cac:OriginCountry/cbc:IdentificationCode/@listID"
-								/>]</small>
-						</xsl:if>
-						</div>
-					</xsl:if>
-
-					<xsl:if test="cac:OrderLineReference/cbc:LineID !=''">
-						<div>
+						<xsl:choose>
+							<xsl:when
+								test="cac:Item/cac:StandardItemIdentification/cbc:ID/@schemeID !=''">
+								<small>&#160;[<xsl:apply-templates
+										select="cac:Item/cac:StandardItemIdentification/cbc:ID/@schemeID"
+									/>]</small>
+							</xsl:when>
+							<xsl:otherwise>
+								<small>&#160;[No schemeID]</small>
+							</xsl:otherwise>
+						</xsl:choose>
+					</div>
+				</xsl:if>
+				<xsl:if test="cac:Item/cbc:Description !=''">
+					<div>
 						<b>
 							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='OrderLineReferenceID']/g-lang[lang($pLang)]"
+								select="$moduleDoc/module/document-merge/g-funcs/g[@name='ItemDescription']/g-lang[lang($pLang)]"
 							/>&#160;</b>
-						<xsl:apply-templates select="cac:OrderLineReference/cbc:LineID"/>
-						</div>
-					</xsl:if>
+						<xsl:apply-templates select="cac:Item/cbc:Description"/>
+					</div>
+				</xsl:if>
 
-					<xsl:if test="cac:Item/cac:ManufacturerParty/cac:PartyName/cbc:Name !=''">
+				<xsl:if test="cac:Item/cac:AdditionalItemProperty !=''">
+					<xsl:apply-templates select="cac:Item/cac:AdditionalItemProperty"/>
+				</xsl:if>
+
+				<xsl:if test="cbc:Note !=''">
+					<div>
 						<b>
 							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='ManufacturerName']/g-lang[lang($pLang)]"
+								select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineNotes']/g-lang[lang($pLang)]"
 							/>&#160;</b>
-						<xsl:apply-templates
-							select="cac:Item/cac:ManufacturerParty/cac:PartyName/cbc:Name"/> ,
-						&#160; <xsl:value-of
-							select="$moduleDoc/module/document-merge/g-funcs/g[@name='ManufacturerID']/g-lang[lang($pLang)]"
-						/>&#160; <xsl:apply-templates
-							select="cac:Item/cac:ManufacturerParty/cac:PartyLegalEntity/cbc:CompanyID"
-						/>
-					</xsl:if>
+						<xsl:apply-templates select="cbc:Note"/>
+					</div>
+				</xsl:if>
+				<xsl:if test="cac:Item/cac:CommodityClassification !=''">
+					<xsl:apply-templates select="cac:Item/cac:CommodityClassification"/>
+				</xsl:if>
 
-					<xsl:if test="cac:BillingReference !=''">
-						<div>
+				<xsl:if test="cbc:AccountingCost !=''">
+					<div>
+						<b>
+							<xsl:value-of
+								select="$moduleDoc/module/document-merge/g-funcs/g[@name='AccountingCost']/g-lang[lang($pLang)]"
+							/>&#160;</b>: <xsl:apply-templates select="cbc:AccountingCost"/>
+					</div>
+				</xsl:if>
+
+				<xsl:if test="cac:InvoicePeriod !=''">
+					<div>
 						<b><xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingReference']/g-lang[lang($pLang)]"
-							/>&#160;</b>
-						<xsl:if test="cac:BillingReference/cac:CreditNoteDocumentReference !=''">
-							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-CreditNote']/g-lang[lang($pLang)]"
-							/>&#160; <xsl:apply-templates
-								select="cac:BillingReference/cac:CreditNoteDocumentReference/cbc:ID"
-							/>&#160; </xsl:if>
+								select="$moduleDoc/module/document-merge/g-funcs/g[@name='InvoicePeriod']/g-lang[lang($pLang)]"
+							/></b>&#160; <xsl:apply-templates select="cac:InvoicePeriod"/>
+					</div>
 
-						<xsl:if test="cac:BillingReference/cac:InvoiceDocumentReference !=''">
-							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-Invoice']/g-lang[lang($pLang)]"
-							/>&#160; <xsl:apply-templates
-								select="cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID"
-							/>&#160; </xsl:if>
+				</xsl:if>
 
-						<xsl:if test="cac:BillingReference/cac:BillingReferenceLine !=''">
-							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-Line']/g-lang[lang($pLang)]"
-							/>&#160; <xsl:apply-templates
-								select="cac:BillingReference/cac:BillingReferenceLine/cbc:ID"/>
-						</xsl:if>
-						</div>
+
+				<xsl:if test="cac:Price/cac:AllowanceCharge !=''">
+					<xsl:apply-templates select="cac:Price/cac:AllowanceCharge"
+						mode="PriceUnit-new"/>
+				</xsl:if>
+
+				<xsl:if test="cac:Item/cac:OriginCountry/cbc:IdentificationCode !=''">
+					<div>
+					<b>
+						<xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='OriginCountry']/g-lang[lang($pLang)]"
+						/>&#160;</b>
+					<xsl:apply-templates
+						select="cac:Item/cac:OriginCountry/cbc:IdentificationCode"/>
+
+					<xsl:if
+						test="cac:Item/cac:OriginCountry/cbc:IdentificationCode/@listID !=''">
+						<small>&#160;[<xsl:apply-templates
+								select="cac:Item/cac:OriginCountry/cbc:IdentificationCode/@listID"
+							/>]</small>
 					</xsl:if>
+					</div>
+				</xsl:if>
 
+				<xsl:if test="cac:OrderLineReference/cbc:LineID !=''">
+					<div>
+						<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='OrderLineReferenceID']/g-lang[lang($pLang)]"/>&#160;</b>
+						<xsl:apply-templates select="cac:OrderLineReference/cbc:LineID"/>
+					</div>
+				</xsl:if>
 
-				</small>
+				<xsl:if test="cac:Item/cac:ManufacturerParty/cac:PartyName/cbc:Name !=''">
+					<b>
+						<xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='ManufacturerName']/g-lang[lang($pLang)]"
+						/>&#160;</b>
+					<xsl:apply-templates
+						select="cac:Item/cac:ManufacturerParty/cac:PartyName/cbc:Name"/> ,
+					&#160; <xsl:value-of
+						select="$moduleDoc/module/document-merge/g-funcs/g[@name='ManufacturerID']/g-lang[lang($pLang)]"
+					/>&#160; <xsl:apply-templates
+						select="cac:Item/cac:ManufacturerParty/cac:PartyLegalEntity/cbc:CompanyID"
+					/>
+				</xsl:if>
 
+				<xsl:if test="cac:BillingReference !=''">
+					<div>
+					<b><xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingReference']/g-lang[lang($pLang)]"
+						/>&#160;</b>
+					<xsl:if test="cac:BillingReference/cac:CreditNoteDocumentReference !=''">
+						<xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-CreditNote']/g-lang[lang($pLang)]"
+						/>&#160; <xsl:apply-templates
+							select="cac:BillingReference/cac:CreditNoteDocumentReference/cbc:ID"
+						/>&#160; </xsl:if>
+
+					<xsl:if test="cac:BillingReference/cac:InvoiceDocumentReference !=''">
+						<xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-Invoice']/g-lang[lang($pLang)]"
+						/>&#160; <xsl:apply-templates
+							select="cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID"
+						/>&#160; </xsl:if>
+
+					<xsl:if test="cac:BillingReference/cac:BillingReferenceLine !=''">
+						<xsl:value-of
+							select="$moduleDoc/module/document-merge/g-funcs/g[@name='BillingRef-Line']/g-lang[lang($pLang)]"
+						/>&#160; <xsl:apply-templates
+							select="cac:BillingReference/cac:BillingReferenceLine/cbc:ID"/>
+					</xsl:if>
+					</div>
+				</xsl:if>
 			</td>
-
+			<td colspan="6">&#160;</td>
 		</tr>
 		<!-- Invoice line/part 3: -->
 
@@ -863,168 +852,81 @@
 
 	<!-- Document legal totals from here-->
 	<xsl:template match="cac:LegalMonetaryTotal" mode="New">
-
 		<tr>
-
-			<td valign="bottom">
-
-				<b><xsl:value-of
-						select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineExtensionAmountTotal']/g-lang[lang($pLang)]"
-					/>&#160;</b>
-
+			<td class="bottom">
+				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineExtensionAmountTotal']/g-lang[lang($pLang)]"/>&#160;</b>
 			</td>
-
-			<td valign="bottom">
-
+			<td class="bottom">
 				<xsl:if test="cbc:AllowanceTotalAmount !='' ">
-
-					<b>
-						<xsl:value-of
-							select="$moduleDoc/module/document-merge/g-funcs/g[@name='AllowanceTotalAmount']/g-lang[lang($pLang)]"
-						/>
-					</b>
-
+					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='AllowanceTotalAmount']/g-lang[lang($pLang)]"/></b>
 				</xsl:if>
-
 			</td>
-
-			<td valign="bottom">
-
+			<td class="bottom">
 				<xsl:if test="cbc:ChargeTotalAmount !='' ">
-
-					<b>
-						<xsl:value-of
-							select="$moduleDoc/module/document-merge/g-funcs/g[@name='ChargeTotalAmount']/g-lang[lang($pLang)]"
-						/>
-					</b>
-
+					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ChargeTotalAmount']/g-lang[lang($pLang)]"/></b>
 				</xsl:if>
-
 			</td>
-
-
-			<td valign="bottom">
-
-				<b>
-					<xsl:value-of
-						select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxExclusiveAmount']/g-lang[lang($pLang)]"
-					/>
-				</b>
-
+			<td class="bottom">
+				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxExclusiveAmount']/g-lang[lang($pLang)]"/></b>
 			</td>
-
-			<td valign="bottom">
-
-				<b>
-					<xsl:value-of
-						select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxTotal(VAT)']/g-lang[lang($pLang)]"
-					/>
-				</b>
-
+			<td class="bottom">
+				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxTotal(VAT)']/g-lang[lang($pLang)]"/></b>
 			</td>
-
-			<td valign="bottom">
-
-				<b>
-					<xsl:value-of
-						select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxInclusiveAmount']/g-lang[lang($pLang)]"
-					/>
-				</b>
-
+			<td class="bottom">
+				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxInclusiveAmount']/g-lang[lang($pLang)]"/></b>
 			</td>
-			<td valign="bottom">
-
+			<td class="bottom">
 				<xsl:if test="cbc:PrepaidAmount !='' ">
-
-					<b>
-						<xsl:value-of
-							select="$moduleDoc/module/document-merge/g-funcs/g[@name='PrepaidAmount']/g-lang[lang($pLang)]"
-						/>
-					</b>
-
+					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PrepaidAmount']/g-lang[lang($pLang)]"/></b>
 				</xsl:if>
 			</td>
-			<td valign="bottom" align="right">
+			<td class="right bottom">
 				<b>
 					<xsl:choose>
 						<xsl:when test="/n1:Invoice">
-							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountInv']/g-lang[lang($pLang)]"
-							/>
+							<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountInv']/g-lang[lang($pLang)]"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of
-								select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountCre']/g-lang[lang($pLang)]"
-							/>
+							<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountCre']/g-lang[lang($pLang)]"/>
 						</xsl:otherwise>
 					</xsl:choose>
 				</b>
 			</td>
-
 		</tr>
-
 		<tr>
-
-			<td valign="top">
-				<xsl:apply-templates select="cbc:LineExtensionAmount"/>&#160;<xsl:apply-templates
-					select="cbc:LineExtensionAmount/@currencyID"/>
+			<td>
+				<xsl:apply-templates select="cbc:LineExtensionAmount"/>&#160;<xsl:apply-templates select="cbc:LineExtensionAmount/@currencyID"/>
 			</td>
-
-			<td valign="top">
-
+			<td>
 				<xsl:if test="cbc:AllowanceTotalAmount !='' ">
-					<xsl:apply-templates select="cbc:AllowanceTotalAmount"
-						/>&#160;<xsl:apply-templates select="cbc:AllowanceTotalAmount/@currencyID"/>
+					<xsl:apply-templates select="cbc:AllowanceTotalAmount"/>&#160;<xsl:apply-templates select="cbc:AllowanceTotalAmount/@currencyID"/>
 				</xsl:if>
-
 			</td>
-
-			<td valign="top">
-
+			<td>
 				<xsl:if test="cbc:ChargeTotalAmount !='' ">
-					<xsl:apply-templates select="cbc:ChargeTotalAmount"/>&#160;<xsl:apply-templates
-						select="cbc:ChargeTotalAmount/@currencyID"/>
+					<xsl:apply-templates select="cbc:ChargeTotalAmount"/>&#160;<xsl:apply-templates select="cbc:ChargeTotalAmount/@currencyID"/>
 				</xsl:if>
-
 			</td>
-
-
-			<td valign="top">
-				<xsl:apply-templates select="cbc:TaxExclusiveAmount"/>&#160;<xsl:apply-templates
-					select="cbc:TaxExclusiveAmount/@currencyID"/>&#160;&#160; </td>
-
-			<td valign="top">
-
+			<td>
+				<xsl:apply-templates select="cbc:TaxExclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxExclusiveAmount/@currencyID"/>&#160;&#160;
+			</td>
+			<td>
 				<xsl:if test="../cac:TaxTotal/cbc:TaxAmount">
-					<xsl:apply-templates select="../cac:TaxTotal/cbc:TaxAmount"
-						/>&#160;<xsl:apply-templates
-						select="../cac:TaxTotal/cbc:TaxAmount/@currencyID"/>
+					<xsl:apply-templates select="../cac:TaxTotal/cbc:TaxAmount"/>&#160;<xsl:apply-templates	select="../cac:TaxTotal/cbc:TaxAmount/@currencyID"/>
 				</xsl:if>
-
 			</td>
-
-			<td valign="top">
-				<xsl:apply-templates select="cbc:TaxInclusiveAmount"/>&#160;<xsl:apply-templates
-					select="cbc:TaxInclusiveAmount/@currencyID"/>
+			<td>
+				<xsl:apply-templates select="cbc:TaxInclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxInclusiveAmount/@currencyID"/>
 			</td>
-			<td valign="top">
-
+			<td>
 				<xsl:if test="cbc:PrepaidAmount !='' ">
-					<xsl:apply-templates select="cbc:PrepaidAmount"/>&#160;<xsl:apply-templates
-						select="cbc:PrepaidAmount/@currencyID"/>
+					<xsl:apply-templates select="cbc:PrepaidAmount"/>&#160;<xsl:apply-templates select="cbc:PrepaidAmount/@currencyID"/>
 				</xsl:if>
-
 			</td>
-
-			<td valign="top" align="right">
-
-				<b><xsl:apply-templates select="cbc:PayableAmount"/>&#160;<xsl:apply-templates
-						select="cbc:PayableAmount/@currencyID"/>
-				</b>
+			<td class="right">
+				<b><xsl:apply-templates select="cbc:PayableAmount"/>&#160;<xsl:apply-templates select="cbc:PayableAmount/@currencyID"/></b>
 			</td>
-
 		</tr>
-
 	</xsl:template>
 
 
@@ -1039,7 +941,7 @@
 	<xsl:template match="cac:AllowanceCharge" mode="DocumentLevel-new">
 
 		<tr>
-			<td valign="top" colspan="2">
+			<td colspan="2">
 
 				<xsl:choose>
 					<xsl:when test="cbc:ChargeIndicator ='true'">
@@ -1057,7 +959,7 @@
 				</xsl:choose>
 
 			</td>
-			<td valign="top" colspan="2">
+			<td colspan="2">
 
 				<xsl:if test="cbc:AllowanceChargeReasonCode !=''">
 					<xsl:apply-templates select="cbc:AllowanceChargeReasonCode"/>
@@ -1070,7 +972,7 @@
 
 			</td>
 
-			<td valign="top" colspan="2">
+			<td colspan="2">
 
 				<xsl:apply-templates select="cbc:AllowanceChargeReason"/>
 			</td>
@@ -1094,7 +996,7 @@
 				</xsl:if>
 
 			</td>
-			<td valign="top" align="right">
+			<td class="right">
 				<xsl:apply-templates select="cbc:Amount"/>&#160;<xsl:apply-templates
 					select="cbc:Amount/@currencyID"/>
 			</td>
@@ -1231,7 +1133,7 @@
 				<xsl:apply-templates select="cbc:TaxableAmount"/> &#160;<xsl:apply-templates
 					select="cbc:TaxableAmount/@currencyID"/>
 			</td>
-			<td align="right">
+			<td class="right">
 				<xsl:if test="cbc:TransactionCurrencyTaxAmount !=''">
 					<xsl:apply-templates select="cbc:TransactionCurrencyTaxAmount"/>
 						&#160;<xsl:apply-templates
@@ -1239,7 +1141,7 @@
 				</xsl:if>
 
 			</td>
-			<td align="right">
+			<td class="right">
 				<xsl:apply-templates select="cbc:TaxAmount"/>&#160;<xsl:apply-templates
 					select="cbc:TaxAmount/@currencyID"/>
 			</td>
@@ -1253,7 +1155,7 @@
 	<xsl:template match="cac:PaymentMeans">
 		<tr>
 
-			<td valign="top">
+			<td>
 				<xsl:apply-templates select="cbc:PaymentMeansCode"/>
 
 				<xsl:choose>
@@ -1269,14 +1171,14 @@
 				</xsl:choose>
 			</td>
 
-			<td valign="top">
+			<td>
 				<xsl:if test="cbc:PaymentChannelCode !=''">
 					<xsl:apply-templates select="cbc:PaymentChannelCode"/>
 				</xsl:if>
 
 			</td>
 
-			<td valign="top" colspan="2">
+			<td colspan="2">
 				<xsl:if
 					test="cac:CardAccount/cbc:PrimaryAccountNumberID !='' or cac:CardAccount/cbc:NetworkID !=''">
 
@@ -1285,7 +1187,7 @@
 				</xsl:if>
 
 				<xsl:if
-					test="cac:PayeeFinancialAccount/cbc:ID !='' or 
+					test="cac:PayeeFinancialAccount/cbc:ID !='' or
 							cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID !=''">
 					<xsl:if
 						test="cac:CardAccount/cbc:PrimaryAccountNumberID !='' or cac:CardAccount/cbc:NetworkID !=''"
@@ -1298,7 +1200,7 @@
 				</xsl:if>
 
 			</td>
-			<td valign="top" colspan="2">
+			<td colspan="2">
 
 				<xsl:if
 					test="cac:CardAccount/cbc:PrimaryAccountNumberID !='' or cac:CardAccount/cbc:NetworkID !=''">
@@ -1327,13 +1229,13 @@
 
 			</td>
 
-			<td valign="top">
+			<td>
 				<xsl:if test="cbc:PaymentID !=''">
 					<xsl:apply-templates select="cbc:PaymentID"/>
 				</xsl:if>
 
 			</td>
-			<td valign="top" align="right">
+			<td class="right">
 				<xsl:if test="cbc:PaymentDueDate !=''">
 					<xsl:apply-templates select="cbc:PaymentDueDate"/>
 				</xsl:if>
@@ -1356,7 +1258,7 @@
 
 				<td> </td>
 
-				<td valign="top" colspan="2">
+				<td colspan="2">
 					<xsl:if
 						test="cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID !='' ">
 						<xsl:apply-templates
@@ -1368,7 +1270,7 @@
 
 				</td>
 
-				<td valign="top" colspan="2">
+				<td colspan="2">
 
 					<small>
 						<xsl:if
@@ -1405,7 +1307,7 @@
 	<xsl:template match="cac:PaymentTerms">
 		<xsl:if test="cbc:Note !=''">
 			<tr>
-				<td valign="top">
+				<td>
 					<xsl:apply-templates select="cbc:Note"/>
 				</td>
 			</tr>
@@ -1462,10 +1364,10 @@
 
 	<xsl:template match="cac:Attachment">
 		<!-- No processing of attached document, just info: -->
-		
+
 		<xsl:if test="cbc:EmbeddedDocumentBinaryObject/@mimeCode !=''">
 			<xsl:value-of
-				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo1']/g-lang[lang($pLang)]"/>  
+				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo1']/g-lang[lang($pLang)]"/>
 		</xsl:if>
 		<xsl:if test="cbc:EmbeddedDocumentBinaryObject/@format !=''"> &#160;<xsl:value-of
 				select="$moduleDoc/module/document-merge/g-funcs/g[@name='AttachmentInfo4']/g-lang[lang($pLang)]"
