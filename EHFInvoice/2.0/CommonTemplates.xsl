@@ -852,51 +852,39 @@
 
 	<!-- Document legal totals from here-->
 	<xsl:template match="cac:LegalMonetaryTotal" mode="New">
-		<tr>
-			<td class="bottom">
-				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineExtensionAmountTotal']/g-lang[lang($pLang)]"/>&#160;</b>
-			</td>
-			<td class="bottom">
+		<tr class="totals">
+			<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='LineExtensionAmountTotal']/g-lang[lang($pLang)]"/></th>
+			<th>
 				<xsl:if test="cbc:AllowanceTotalAmount !='' ">
-					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='AllowanceTotalAmount']/g-lang[lang($pLang)]"/></b>
+					<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='AllowanceTotalAmount']/g-lang[lang($pLang)]"/>
 				</xsl:if>
-			</td>
-			<td class="bottom">
+			</th>
+			<th>
 				<xsl:if test="cbc:ChargeTotalAmount !='' ">
-					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ChargeTotalAmount']/g-lang[lang($pLang)]"/></b>
+					<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='ChargeTotalAmount']/g-lang[lang($pLang)]"/>
 				</xsl:if>
-			</td>
-			<td class="bottom">
-				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxExclusiveAmount']/g-lang[lang($pLang)]"/></b>
-			</td>
-			<td class="bottom">
-				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxTotal(VAT)']/g-lang[lang($pLang)]"/></b>
-			</td>
-			<td class="bottom">
-				<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxInclusiveAmount']/g-lang[lang($pLang)]"/></b>
-			</td>
-			<td class="bottom">
+			</th>
+			<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxExclusiveAmount']/g-lang[lang($pLang)]"/></th>
+			<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxTotal(VAT)']/g-lang[lang($pLang)]"/></th>
+			<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='TaxInclusiveAmount']/g-lang[lang($pLang)]"/></th>
+			<th>
 				<xsl:if test="cbc:PrepaidAmount !='' ">
-					<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PrepaidAmount']/g-lang[lang($pLang)]"/></b>
+					<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PrepaidAmount']/g-lang[lang($pLang)]"/>
 				</xsl:if>
-			</td>
-			<td class="right bottom">
-				<b>
-					<xsl:choose>
-						<xsl:when test="/n1:Invoice">
-							<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountInv']/g-lang[lang($pLang)]"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountCre']/g-lang[lang($pLang)]"/>
-						</xsl:otherwise>
-					</xsl:choose>
-				</b>
-			</td>
+			</th>
+			<th class="right">
+				<xsl:choose>
+					<xsl:when test="/n1:Invoice">
+						<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountInv']/g-lang[lang($pLang)]"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableAmountCre']/g-lang[lang($pLang)]"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</th>
 		</tr>
-		<tr>
-			<td>
-				<xsl:apply-templates select="cbc:LineExtensionAmount"/>&#160;<xsl:apply-templates select="cbc:LineExtensionAmount/@currencyID"/>
-			</td>
+		<tr class="totals">
+			<td><xsl:apply-templates select="cbc:LineExtensionAmount"/>&#160;<xsl:apply-templates select="cbc:LineExtensionAmount/@currencyID"/></td>
 			<td>
 				<xsl:if test="cbc:AllowanceTotalAmount !='' ">
 					<xsl:apply-templates select="cbc:AllowanceTotalAmount"/>&#160;<xsl:apply-templates select="cbc:AllowanceTotalAmount/@currencyID"/>
@@ -907,25 +895,19 @@
 					<xsl:apply-templates select="cbc:ChargeTotalAmount"/>&#160;<xsl:apply-templates select="cbc:ChargeTotalAmount/@currencyID"/>
 				</xsl:if>
 			</td>
-			<td>
-				<xsl:apply-templates select="cbc:TaxExclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxExclusiveAmount/@currencyID"/>&#160;&#160;
-			</td>
+			<td><xsl:apply-templates select="cbc:TaxExclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxExclusiveAmount/@currencyID"/></td>
 			<td>
 				<xsl:if test="../cac:TaxTotal/cbc:TaxAmount">
 					<xsl:apply-templates select="../cac:TaxTotal/cbc:TaxAmount"/>&#160;<xsl:apply-templates	select="../cac:TaxTotal/cbc:TaxAmount/@currencyID"/>
 				</xsl:if>
 			</td>
-			<td>
-				<xsl:apply-templates select="cbc:TaxInclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxInclusiveAmount/@currencyID"/>
-			</td>
+			<td><xsl:apply-templates select="cbc:TaxInclusiveAmount"/>&#160;<xsl:apply-templates select="cbc:TaxInclusiveAmount/@currencyID"/></td>
 			<td>
 				<xsl:if test="cbc:PrepaidAmount !='' ">
 					<xsl:apply-templates select="cbc:PrepaidAmount"/>&#160;<xsl:apply-templates select="cbc:PrepaidAmount/@currencyID"/>
 				</xsl:if>
 			</td>
-			<td class="right">
-				<b><xsl:apply-templates select="cbc:PayableAmount"/>&#160;<xsl:apply-templates select="cbc:PayableAmount/@currencyID"/></b>
-			</td>
+			<td class="right"><strong><xsl:apply-templates select="cbc:PayableAmount"/>&#160;<xsl:apply-templates select="cbc:PayableAmount/@currencyID"/></strong></td>
 		</tr>
 	</xsl:template>
 

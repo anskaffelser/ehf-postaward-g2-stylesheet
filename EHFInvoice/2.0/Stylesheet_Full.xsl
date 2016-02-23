@@ -104,7 +104,7 @@
 
 					<tr>
 
-						<td colspan="2" style="width: 25%">
+						<td colspan="2">
 
 							<xsl:if test="cbc:AccountingCost !=''">
 								<h2><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='AccountingCost']/g-lang[lang($pLang)]"/>&#160;</h2>
@@ -112,7 +112,7 @@
 							</xsl:if>
 
 						</td>
-						<td colspan="2" style="width: 25%">
+						<td colspan="2">
 
 							<xsl:if test="cac:InvoicePeriod !=''">
 
@@ -124,7 +124,7 @@
 							</xsl:if>
 						</td>
 
-						<td colspan="2" style="width: 25%">
+						<td colspan="2">
 							<xsl:if test="cac:OrderReference/cbc:ID !=''">
 							<h2>
 								<xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='OrderReferenceID']/g-lang[lang($pLang)]"/>&#160;</h2>
@@ -133,7 +133,7 @@
 							</xsl:if>
 
 						</td>
-						<td colspan="2" style="width: 25%">&#160;</td>
+						<td colspan="2">&#160;</td>
 					</tr>
 					<tr>
 						<td colspan="8">
@@ -418,32 +418,17 @@
 
 					<!-- Fix document totals -->
 				<tr>
-
 					<td colspan="7">
-
-						<h2> <xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocTotals']/g-lang[lang($pLang)]"/> </h2>
-
+						<h2><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='DocTotals']/g-lang[lang($pLang)]"/></h2>
 					</td>
-
-					<td class="right">
-
+					<td class="right small">
 						<xsl:if test="cac:LegalMonetaryTotal/cbc:PayableRoundingAmount !='' ">
-
-							<small>
-
-								<b> <xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableRoundingAmount']/g-lang[lang($pLang)]"/></b>
-
-						<br/>
-							<xsl:apply-templates select="cac:LegalMonetaryTotal/cbc:PayableRoundingAmount"/>
-							&#160;<xsl:apply-templates select="cac:LegalMonetaryTotal/cbc:PayableRoundingAmount/@currencyID"/>
-
-							</small>
+							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayableRoundingAmount']/g-lang[lang($pLang)]"/></b>
+					    <br/>
+						  <xsl:apply-templates select="cac:LegalMonetaryTotal/cbc:PayableRoundingAmount"/>&#160;<xsl:apply-templates select="cac:LegalMonetaryTotal/cbc:PayableRoundingAmount/@currencyID"/>
 						</xsl:if>
-
 					</td>
-
 				</tr>
-
 				<xsl:apply-templates select="cac:LegalMonetaryTotal" mode="New"/>
 
 
@@ -493,32 +478,16 @@
 					</tr>
 
 					<tr>
-
-						<td>
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentMeansCode']/g-lang[lang($pLang)]"/></b>&#160;&#160;
-						</td>
-						<td>
+						<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentMeansCode']/g-lang[lang($pLang)]"/></th>
+						<th>
 							<xsl:if test="cac:PaymentMeans/cbc:PaymentChannelCode !=''">
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentChannelCode']/g-lang[lang($pLang)]"/></b>
+			          <xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentChannelCode']/g-lang[lang($pLang)]"/>
 							</xsl:if>
-						</td>
-						<td colspan="2">
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayeeFinancialAccountID']/g-lang[lang($pLang)]"/></b>
-
-						</td>
-						<td colspan="2">
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='FinancialInstitutionID']/g-lang[lang($pLang)]"/></b>
-
-						</td>
-						<td>
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentRef']/g-lang[lang($pLang)]"/></b>
-
-						</td>
-						<td class="right">
-
-							<b><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentDueDate']/g-lang[lang($pLang)]"/></b>
-						</td>
-
+						</th>
+						<th colspan="2"><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PayeeFinancialAccountID']/g-lang[lang($pLang)]"/></th>
+						<th colspan="2"><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='FinancialInstitutionID']/g-lang[lang($pLang)]"/></th>
+						<th><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentRef']/g-lang[lang($pLang)]"/></th>
+						<th class="right"><xsl:value-of select="$moduleDoc/module/document-merge/g-funcs/g[@name='PaymentDueDate']/g-lang[lang($pLang)]"/></th>
 					</tr>
 
 

@@ -35,17 +35,28 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
+tr.totals th {
+	width: 12.5%;
+}
+tr.totals td {
+	vertical-align: bottom;
+}
+
+th {
+	text-align: left;
+}
 td {
 	vertical-align: top;
 	padding: 2px;
 }
-td.center {
+.center {
 	text-align: center;
 }
-td.right {
+.right {
 	text-align: right;
 }
-td.bottom {
+.bottom {
 	vertical-align: bottom;
 }
 
