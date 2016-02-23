@@ -53,7 +53,7 @@
 
 
 		<!-- Start HTML -->
-		<html lang="{pLang}">
+		<html lang="{$pLang}">
 			<head>
 				<link rel="Stylesheet" type="text/css" href="{$pStylesheetDir}PEPPOL.css"/>
 				<title>EHF Faktura og kreditnota</title>
