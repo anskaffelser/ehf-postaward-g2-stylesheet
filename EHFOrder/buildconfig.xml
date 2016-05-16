@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+	<!-- Holder for stylesheet for order. -->
+	<configuration>
+		<identifier>ehf-t01-stylesheet-1.0</identifier>
+		<title>EHF Order 1.0 Stylesheet</title>
+		<!-- <stylesheet identifier="ehf-t01-1" source="ehf-t01-order-1.xsl" path="ehf-t01-order-1.xsl">
+			<setting name="pLang" defaultValue="no" />
+			<setting name="pStylesheet" defaultValue="" />
+		</stylesheet> -->
+	</configuration>
+	<configuration>
+		<identifier>ehf-t76-stylesheet-1.0</identifier>
+		<title>EHF Order Response 1.0 Stylesheet</title>
+		<!-- <stylesheet identifier="ehf-t76-1" source="ehf-t76-orderresponse-1.xsl" path="ehf-t76-orderresponse-1.xsl">
+			<setting name="pLang" defaultValue="no" />
+			<setting name="pStylesheet" defaultValue="" />
+		</stylesheet> -->
+	</configuration>
+
+</buildConfigurations>
