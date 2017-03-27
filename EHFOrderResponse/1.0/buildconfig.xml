@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+	<configuration>
+		<identifier>ehf-t76-stylesheet-1.0</identifier>
+		<title>EHF Order Response 1.0 Stylesheet</title>
+		<stylesheet identifier="ehf-t76-1" source="Ordrebekreftelse.xsl" path="stylesheet_ehf_t76/stylesheet.xsl">
+			<!-- <setting name="pStylesheetDir" defaultValue="" /> -->
+		</stylesheet>
+	</configuration>
+
+	<include source="EHF.css" path="stylesheet_ehf_t76/EHF.css" />
+
+</buildConfigurations>
