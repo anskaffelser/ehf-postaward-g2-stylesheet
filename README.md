@@ -1,3 +1,5 @@
+**Stylesheet for invoice and credit note is moved to [ehf-postaward-g2](https://github.com/anskaffelser/ehf-postaward-g2/).**
+
 # EHF Stylesheets
 
 Version: **16.05**
